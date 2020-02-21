@@ -1,4 +1,4 @@
-reource "aws_autoscaling_group" "default:" {
+resource "aws_autoscaling_group" "default:" {
   name                      = "terraform-springboot-helloapp"
   max_size                  = 3
   min_size                  = 2
