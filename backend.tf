@@ -3,5 +3,6 @@ terraform {
     bucket = "terraform-wipluv"
     key    = "terraform/dev/helloapp"
     region = "us-east-1"
+    profile = "wipluu"
   }
 }
