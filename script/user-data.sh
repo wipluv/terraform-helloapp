@@ -1,6 +1,6 @@
 #!/bin/bash
 # this line will install aws cli
-pip install
+pip install awscli
 
 awscli# this will display and set the bucket name
 myBucket=springboot-helloapp-wipluv
