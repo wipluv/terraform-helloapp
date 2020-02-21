@@ -1,18 +1,25 @@
 data "aws_iam_policy_document" "default" {
   statement {
-    sid = "1"    actions = [
+    sid = "1"
+    actions = [
       "s3:ListAllMyBuckets",
       "s3:GetBucketLocation",
       "s3:ListBucket",
       "s3:GetObject",
       "s3:ListObject"
-    ]    resources = [
+    ]
+    resources = [
       "arn:aws:s3:::*"
     ]
-  }}resource "aws_iam_policy" "default" {
+  }
+}
+
+resource "aws_iam_policy" "default" {
   name   = "terraform.s3-access-helloapp" 
   policy = "${data.aws_iam_policy_document.default.json}"
-}resource "aws_iam_role" "default" {
+}
+
+resource "aws_iam_role" "default" {
   name = "terraform.s3-access-helloapp" 
   assume_role_policy = <<EOF
 {
@@ -29,14 +36,14 @@ data "aws_iam_policy_document" "default" {
       ]
     }
 EOF
-}resource "aws_iam_role_policy_attachment" "default" {
+}
+
+resource "aws_iam_role_policy_attachment" "default" {
   role       = "${aws_iam_role.default.name}"
   policy_arn = "${aws_iam_policy.default.arn}"
-}resource "aws_iam_instance_profile" "default" {
+}
+
+resource "aws_iam_instance_profile" "default" {
   name = "terraform.s3-access-helloapp"
   role = "${aws_iam_role.default.name}"
 }
-
-
-Message #general
-
